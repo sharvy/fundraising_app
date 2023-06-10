@@ -1,17 +1,19 @@
-<div id="<%= dom_id campaign %>">
-  <p>
-    <strong>Title:</strong>
+<div id="<%= dom_id campaign %>" class="bg-white rounded shadow-md p-4">
+  <h3 class="text-xl font-semibold mb-2">
     <%= campaign.title %>
-  </p>
-  <p>
-    <strong>Description:</strong>
+  </h3>
+  <p class="mb-4">
     <%= campaign.description %>
   </p>
-  <p>
-    <strong>Goal:</strong>
-    <%= campaign.goal %>
-  </p>
-  <p>
-    <%= link_to "Show this campaign" , campaign %>
-  </p>
+  <%= link_to "Donate Now" , campaign_path(campaign),
+    class: "bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 mb-2" %>
+
+    <span class="flex mt-4">
+      <%= link_to "Edit this campaign" ,
+        edit_campaign_path(campaign),class: "bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600 mr-2" %>
+        <%= link_to "Back to campaigns" , campaigns_path,
+          class: "bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600 mr-2" %>
+          <%= button_to "Destroy this campaign" , campaign_path(campaign),
+            class: "bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600" , method: :delete %>
+    </span>
 </div>
