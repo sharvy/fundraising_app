@@ -1,12 +1,3 @@
-<%= turbo_stream_from :campaigns %>
 <p style="color: green"><%= notice %></p>
-
-<h1>Campaigns</h1>
-
-<div id="campaigns">
-  <% @campaigns.each do |campaign| %>
-    <%= render campaign %>
-  <% end %>
-</div>
-
-<%= link_to "New campaign", new_campaign_path %>
+<%= render partial: 'campaigns/featured_campaign', locals: { campaign: @campaigns.first } %>
+<%= render partial: 'campaigns/campaigns', locals: { campaigns: @campaigns } %>
