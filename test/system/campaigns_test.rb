@@ -7,7 +7,7 @@ class CampaignsTest < ApplicationSystemTestCase
 
   test 'visiting the index' do
     visit campaigns_url
-    assert_selector 'h1', text: 'Campaigns'
+    assert_selector 'h1', text: @campaign.title
   end
 
   test 'should create campaign' do
@@ -17,28 +17,26 @@ class CampaignsTest < ApplicationSystemTestCase
     fill_in 'Description', with: @campaign.description
     fill_in 'Goal', with: @campaign.goal
     fill_in 'Title', with: @campaign.title
-    click_on 'Create Campaign'
+    click_on 'Submit'
 
     assert_text 'Campaign was successfully created'
-    click_on 'Back'
   end
 
   test 'should update Campaign' do
     visit campaign_url(@campaign)
-    click_on 'Edit this campaign', match: :first
+    click_on 'Edit', match: :first
 
     fill_in 'Description', with: @campaign.description
     fill_in 'Goal', with: @campaign.goal
     fill_in 'Title', with: @campaign.title
-    click_on 'Update Campaign'
+    click_on 'Submit'
 
     assert_text 'Campaign was successfully updated'
-    click_on 'Back'
   end
 
   test 'should destroy Campaign' do
     visit campaign_url(@campaign)
-    click_on 'Destroy this campaign', match: :first
+    click_on 'Destroy', match: :first
 
     assert_text 'Campaign was successfully destroyed'
   end

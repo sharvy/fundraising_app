@@ -23,6 +23,7 @@ end
 group :development do
   gem 'erb_lint'
   gem 'web-console'
+  gem 'faker'
 end
 
 group :test do
