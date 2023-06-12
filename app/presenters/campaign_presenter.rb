@@ -1,27 +1,23 @@
-class CampaignPresenter
+class CampaignPresenter < SimpleDelegator
   TRUNCATE_DEFAULTS = { title: 40, description: 200 }.freeze
-  delegate_missing_to :@campaign
 
-  def initialize(campaign)
-    @campaign = campaign
+  def short_title(length: TRUNCATE_DEFAULTS[:title])
+    title.truncate(length, separator: ' ')
   end
 
-  def short_title
-    campaign.title.truncate(TRUNCATE_DEFAULTS[:title])
-  end
-
-  def short_description
-    campaign.description.truncate(TRUNCATE_DEFAULTS[:description])
+  def short_description(length: TRUNCATE_DEFAULTS[:description])
+    description.truncate(length, separator: ' ')
   end
 
   def goal_description
-    "<strong>BDT #{donation_collected}</strong> raised of <strong>BDT #{campaign.goal}</strong>".html_safe
+    "<strong>BDT #{donation_collected}</strong> raised of <strong>BDT #{goal}</strong>".html_safe
   end
 
-  def percentage_completed
+  def progress
     (donation_collected / goal) * 100
   end
 
+  # TODO: Fix this, remove random number and get it from campaign model
   def donation_collected
     @donation_collected ||= rand(100)
   end

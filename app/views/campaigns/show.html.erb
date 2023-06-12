@@ -1,4 +1,4 @@
-<% campaign = CampaignPresenter.new(@campaign) %>
+<% campaign = @campaign.decorate %>
 <div id="<%= dom_id campaign %>" class="bg-white rounded shadow-md p-4">
   <div class="flex mb-4">
     <div class="flex-grow">
@@ -13,7 +13,7 @@
   <img src="https://placehold.co/400x200?text=ektaka&font=roboto" alt="Campaign Image" class="w-full rounded mb-4">
   <%= render 'shared/1taka' %>
   <p class="mb-4">
-    <%= render 'shared/progress_bar', completed: campaign.percentage_completed %>
+    <%= render 'shared/progress_bar', completed: campaign.progress %>
   </p>
   <p class="mb-4">
     <%= campaign.goal_description %>
