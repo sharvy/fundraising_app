@@ -1,8 +1,7 @@
-<%= form_with(model: campaign) do |form| %>
+<%= form_with(model: campaign, class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4") do |form| %>
   <% if campaign.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(campaign.errors.count, "error") %> prohibited this campaign from being saved:</h2>
-
       <ul>
         <% campaign.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,22 +10,23 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="mb-4">
+    <%= form.label :title, class: "block text-gray-700 text-sm mb-2" %>
+    <%= form.text_field :title, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
+  <div class="mb-4">
+    <%= form.label :description, class: "block text-gray-700 text-sm mb-2" %>
+    <%= form.text_area :description, class: "shadow appearance-none border rounded w-full min-h-4 py-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", rows: 10 %>
   </div>
 
-  <div>
-    <%= form.label :goal, style: "display: block" %>
-    <%= form.text_field :goal %>
+  <div class="mb-4">
+    <%= form.label :goal, class: "block text-grey-700 text-sm mb-2" %>
+    <%= form.number_field :goal, step: 1, class: "shadow appearance-none border rounded w-full py-2 px-3 text-grey-700 leading-tight focus:outline-none focus:shadow-outline" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="flex items-left">
+    <%= form.submit "Submit", class: "bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2", data: { disable_with: "Processing..." } %>
+    <%= link_to "Cancel", campaigns_path, class: "bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
   </div>
 <% end %>

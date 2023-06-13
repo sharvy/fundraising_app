@@ -1,19 +1,19 @@
-<div id="<%= dom_id campaign %>" class="bg-white rounded shadow-md p-4">
-  <h3 class="text-xl font-semibold mb-2">
-    <%= campaign.title %>
-  </h3>
-  <p class="mb-4">
-    <%= campaign.description %>
+<% campaign = campaign.decorate %>
+<div id="<%= dom_id campaign %>" class="bg-white rounded shadow-md p-4 mb-20">
+  <img src="https://placehold.co/400x200/eeeeee/999999?text=ektaka&font=roboto" alt="Campaign Image" class="w-full rounded">
+  <%= link_to campaign_path(id: campaign.id) do %>
+    <h1 class="text-xl font-semibold my-2">
+      <%= campaign.short_title %>
+    </h1>
+  <% end %>
+  <p class="mb-4 md:h-24 h-32">
+    <%= campaign.short_description %>
   </p>
-  <%= link_to "Donate Now" , campaign_path(campaign),
-    class: "bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 mb-2" %>
-
-    <span class="flex mt-4">
-      <%= link_to "Edit this campaign" ,
-        edit_campaign_path(campaign),class: "bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600 mr-2" %>
-        <%= link_to "Back to campaigns" , campaigns_path,
-          class: "bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600 mr-2" %>
-          <%= button_to "Destroy this campaign" , campaign_path(campaign),
-            class: "bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600" , method: :delete %>
-    </span>
+  <p class="mb-4">
+    <%= render 'shared/progress_bar', completed: campaign.progress %>
+  </p>
+  <p class="mb-4">
+    <%= campaign.goal_description %>
+  </p>
+  <%= render 'shared/1taka' %>
 </div>

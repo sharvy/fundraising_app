@@ -9,13 +9,18 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
   </head>
 
-  <body>
-    <%= render partial: 'layouts/header' %>
-    <main class="container mx-auto py-8">
-      <%= yield %>
-    </main>
-    <%= render partial: 'layouts/footer' %>
+  <body class="h-full">
+      <%= render partial: 'layouts/header' %>
+      <main class="container mx-auto py-8 h-full min-h-screen">
+        <p class="mb-4 text-green-500 text-center italic w-full"><%= notice %></p>
+        <%= yield %>
+      </main>
+      <%= render partial: 'layouts/footer' %>
   </body>
 </html>

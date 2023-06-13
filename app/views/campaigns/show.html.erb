@@ -1,2 +1,27 @@
-<p style="color: green"><%= notice %></p>
-<%= render @campaign %>
+<% campaign = @campaign.decorate %>
+<div id="<%= dom_id campaign %>" class="bg-white rounded shadow-md p-4">
+  <div class="flex mb-4">
+    <div class="flex-grow">
+      <!-- Content of the div -->
+    </div>
+    <div class="flex">
+      <%= link_to "Edit", edit_campaign_path(@campaign), class: "bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600 mr-2 inline-block" %>
+      <%= button_to "Destroy" , campaign_path(@campaign), class: "bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 inline-block" , method: :delete %>
+    </div>
+  </div>
+
+  <img src="https://placehold.co/400x200?text=ektaka&font=roboto" alt="Campaign Image" class="w-full rounded mb-4">
+  <%= render 'shared/1taka' %>
+  <p class="mb-4">
+    <%= render 'shared/progress_bar', completed: campaign.progress %>
+  </p>
+  <p class="mb-4">
+    <%= campaign.goal_description %>
+  </p>
+  <h1 class="text-xl font-semibold my-2">
+    <%= campaign.title %>
+  </h1>
+  <p class="mb-4">
+    <%= campaign.description %>
+  </p>
+</div>
