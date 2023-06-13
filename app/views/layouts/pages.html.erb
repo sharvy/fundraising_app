@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FundraisingApp</title>
+    <title>Ektaka</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -16,11 +16,11 @@
   </head>
 
   <body class="h-full">
-      <%= render 'layouts/header_internal' %>
+      <%= render 'layouts/header_external' %>
       <main class="container mx-auto py-8 h-full min-h-screen">
         <%= render 'layouts/notices' %>
         <%= yield %>
       </main>
-      <%= render 'layouts/footer' %>
+      <%= render partial: 'layouts/footer' %>
   </body>
 </html>
