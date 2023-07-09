@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # The Presentable module is used to add a `decorate` method to any class
 module Presentable
   def decorate
