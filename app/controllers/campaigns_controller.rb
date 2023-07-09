@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CampaignsController < ApplicationController
   before_action :set_campaign, only: %i[show edit update destroy]
   before_action :authenticate_user!

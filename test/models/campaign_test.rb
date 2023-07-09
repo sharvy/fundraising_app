@@ -1,4 +1,6 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class CampaignTest < ActiveSupport::TestCase
   def setup
@@ -30,6 +32,6 @@ class CampaignTest < ActiveSupport::TestCase
   test 'goal should be a positive value' do
     @campaign.goal = -100
     assert_not @campaign.valid?
-    assert_includes @campaign.errors[:goal], "must be greater than 0"
+    assert_includes @campaign.errors[:goal], 'must be greater than 0'
   end
 end

@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class CampaignsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @campaign = campaigns(:one)
+    sign_in users(:one)
   end
 
   test 'should get index' do

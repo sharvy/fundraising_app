@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CampaignPresenter < SimpleDelegator
   TRUNCATE_DEFAULTS = { title: 40, description: 200 }.freeze
 
